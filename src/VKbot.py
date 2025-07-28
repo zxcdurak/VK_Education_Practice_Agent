@@ -13,5 +13,3 @@ async def greet_handler(message: Message):
         await message.reply("☠️Хватит ругаться!☠️")
     else:
         await message.reply(ask(" ".join(take_parts(message.text)) + "\n" + message.text))
-
-bot.run_forever()
