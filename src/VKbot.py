@@ -2,7 +2,7 @@ from vkbottle.bot import Bot, Message
 from config import settings
 from check_message import contains_profanity
 from KB import take_parts
-from src.chat_LLM import ask
+from src.llmService import ask
 
 bot = Bot(settings.vk_token)
 
