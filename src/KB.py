@@ -1,5 +1,5 @@
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from parserINFO import divs, FAQ_qa
+from Parsers.parserINFO import divs, FAQ_qa
 
 docs = []
 def update_docs():
