@@ -33,4 +33,4 @@ class GigaChatImpl(AbstractChat):
         return res.content
 
 
-gigachat = GigaChatImpl(settings.model_LLM)
+gigachat = GigaChatImpl(settings.model_llm)
