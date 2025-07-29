@@ -1,5 +1,5 @@
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from Parsers.parserINFO import divs, FAQ_qa
+from parsers import faq_parser, progs_parser
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
 import orjson
