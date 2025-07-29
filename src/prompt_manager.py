@@ -4,10 +4,10 @@ class PromptManager:
 
     def get_prompt(self, name: str) -> str | None:
         try:
-            with open(f"{self.path}/{name}" + ".txt") as f:
+            with open(f"{self.path}/{name}" + ".txt", encoding="utf-8") as f:
                 return f.read()
         except FileNotFoundError:
             return None
 
 
-manager = PromptManager(path="prompts/")
+manager = PromptManager(path="src/prompts/")

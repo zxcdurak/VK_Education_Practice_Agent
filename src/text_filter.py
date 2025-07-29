@@ -8,7 +8,7 @@ class ProfanityFilter:
 
     def _load_banned_words(self) -> list[str]:
         try:
-            with open(self.banned_words_file, "r", encoding="utf-8") as file:
+            with open("src/"+ self.banned_words_file, "r", encoding="utf-8") as file:
                 words = [line.strip().lower() for line in file if line.strip()]
             return words
         except FileNotFoundError:
