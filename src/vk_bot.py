@@ -1,8 +1,8 @@
 from vkbottle.bot import Bot, Message
 from config import settings
 from text_filter import text_filter as tf
-from knowledge_base import kb
-from llm_service import gigachat
+from llm_models import gigachat
+from llm_service import ask_llm
 
 bot = Bot(settings.vk_token)
 
@@ -12,4 +12,4 @@ async def greet_handler(message: Message):
         print(message.text)
         await message.reply("☠️Хватит ругаться!☠️")
     else:
-        await message.reply(gigachat.ask(" ".join(kb.searh(message.text)) + "\n" + message.text))
+        await message.reply(await ask_llm(gigachat, message.text))
