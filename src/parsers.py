@@ -4,6 +4,8 @@ import orjson
 import re
 from pathlib import Path
 
+from test import clean_program_text
+
 class FAQParser:
     def __init__(self, url: str):
         self.url = url
@@ -54,6 +56,16 @@ class ProgramsParser:
         response.raise_for_status()
         return orjson.loads(response.content)
 
+    def clean_program_text(self, text):
+        soup = BeautifulSoup(text, "html.parser")
+        cleaned_text = soup.get_text(separator=" ", strip=True)
+        for old, new in [
+            ("Желаем удачи! Нажмите «Выбрать проект», чтобы зарегистрироваться и получить доступ к подробному описанию.", ""),
+            ("Желаем успехов! Нажмите «Выбрать проект», чтобы зарегистрироваться и получить доступ к подробному описанию.", "")
+        ]:
+            cleaned_text = cleaned_text.replace(old, new)
+        return cleaned_text
+
     def parse_programs(self) -> list[dict]:
         """Обрабатывает список программ и возвращает список словарей."""
         raw_data = self.fetch_data()
@@ -66,14 +78,7 @@ class ProgramsParser:
         for i, prog in enumerate(products):
             print(f"{i+1}. {prog['title']}")
 
-            cleaned_text = (
-                re.sub(r"<.*?>", "", prog["text"])  # Удаление HTML-тегов
-                .replace("&nbsp;", " ")
-                .replace("amp;", "")
-                .replace("Желаем удачи!Нажмите «Выбрать проект» чтобы зарегистрироваться и получить доступ к подробному описанию.", "")
-                .replace("Желаем успехов!Нажмите «Выбрать проект» чтобы зарегистрироваться и получить доступ к подробному описанию.", "")
-                .strip()
-            )
+            cleaned_text = self.clean_program_text(prog["text"])
 
             program_data = {
                 "title": prog["title"],
