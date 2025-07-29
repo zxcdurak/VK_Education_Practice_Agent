@@ -22,8 +22,8 @@ with open('data_parsed.json', 'r', encoding="utf-8") as file:
 
 # print(take_parts("Что такое VK educate"))
 from time import time
-from KB import take_parts
+from knowledge_base import kb
 start = time()
 
-print(take_parts("Что такое VK educate?"))
+print(("Что такое VK educate?"))
 print(time() - start)

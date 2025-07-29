@@ -74,4 +74,4 @@ class KnowledgeBase:
         return [p.page_content for p in parts]
 
 
-KB = KnowledgeBase("gigachats_kb", "../db")
+kb = KnowledgeBase("gigachats_kb", "../db")

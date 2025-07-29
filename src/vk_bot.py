@@ -1,8 +1,8 @@
 from vkbottle.bot import Bot, Message
 from config import settings
 from check_message import contains_profanity
-from KB import KB
-from src.llmService import gigachat
+from knowledge_base import kb
+from llm_service import gigachat
 
 bot = Bot(settings.vk_token)
 
@@ -12,4 +12,4 @@ async def greet_handler(message: Message):
         print(message.text)
         await message.reply("☠️Хватит ругаться!☠️")
     else:
-        await message.reply(gigachat.ask(" ".join(KB.searh(message.text)) + "\n" + message.text))
+        await message.reply(gigachat.ask(" ".join(kb.searh(message.text)) + "\n" + message.text))

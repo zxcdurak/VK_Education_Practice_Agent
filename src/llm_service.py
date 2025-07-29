@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_gigachat.chat_models import GigaChat
 from config import settings
-from PromptManager import manager
+from prompt_manager import manager
 
 
 class AbstractChat(ABC):
