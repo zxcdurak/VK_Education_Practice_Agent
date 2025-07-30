@@ -25,7 +25,7 @@ async def update_kb(message: Message):
     kb.update_knowledge_base(
         divs_data=faq_parser.extract_text_blocks(),
         faq_data=faq_parser.extract_faq(),
-        json_file_path="src/parsed_data/data_parsed.json"
+        json_file_path=progs_parser.dir + "data_parsed.json"
     )
 
 @bot.on.message()
@@ -35,7 +35,7 @@ async def greet_handler(message: Message):
         await message.reply("☠️Хватит ругаться!☠️")
     else:
         print("работаем...")
-        # await message.reply(await ask_llm(gigachat, message.text))
+        await message.reply(await ask_llm(gigachat, message.text))
 
 
 
