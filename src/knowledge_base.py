@@ -1,5 +1,4 @@
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from parsers import faq_parser, progs_parser
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
 import orjson
@@ -72,6 +71,3 @@ class KnowledgeBase:
     def search(self, query: str) -> list[str]:
         parts = self.retriever.invoke(query)
         return [p.page_content for p in parts]
-
-
-kb = KnowledgeBase("gigachats_kb", "../db")

@@ -37,4 +37,4 @@ class FAQParser:
         return faq_text
     
 
-faq_parser = FAQParser(url="https://tilda-embed.tech-mail.ru/redmine_issue_13800")
+

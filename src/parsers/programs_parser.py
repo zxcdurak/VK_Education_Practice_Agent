@@ -24,10 +24,11 @@ class ProgramsParser:
         cleaned_text = soup.get_text(separator=" ", strip=True)
         for old, new in [
             ("Желаем удачи! Нажмите «Выбрать проект», чтобы зарегистрироваться и получить доступ к подробному описанию.", ""),
-            ("Желаем успехов! Нажмите «Выбрать проект», чтобы зарегистрироваться и получить доступ к подробному описанию.", "")
+            ("Желаем успехов! Нажмите «Выбрать проект», чтобы зарегистрироваться и получить доступ к подробному описанию.", ""),
+            ("Нажмите «Выбрать проект», чтобы зарегистрироваться и получить доступ к подробному описанию.", "")
         ]:
             cleaned_text = cleaned_text.replace(old, new)
-        return cleaned_text
+        return cleaned_text.strip()
 
     def parse_programs(self) -> list[dict]:
         """Обрабатывает список программ и возвращает список словарей."""
@@ -71,11 +72,6 @@ class ProgramsParser:
         print(f"Parsed programs saved to {filepath}")
 
 
-progs_parser = ProgramsParser(
-    url="https://store.tildaapi.com/api/getproductslist/?storepartuid=357127554781&recid=754421136&c=1752668309883&sort%5Bcreated%5D=desc&size=100",
-    dir="src/parsed_data/"
-    )
 
-progs_parser.parse_programs()
-progs_parser.save_raw_data("data_pretty.json")
-progs_parser.save_parsed_data("data_parsed.json")
+
+

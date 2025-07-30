@@ -31,6 +31,3 @@ class GigaChatImpl(AbstractChat):
         messages.append(HumanMessage(content=question))
         res = self.giga.invoke(messages)
         return res.content
-
-
-gigachat = GigaChatImpl(settings.model_llm)

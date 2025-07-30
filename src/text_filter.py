@@ -34,4 +34,3 @@ class ProfanityFilter:
         normalized_text = self.normalize(text)
         return profanity.censor(normalized_text)
     
-text_filter = ProfanityFilter("ban.txt")
