@@ -3,14 +3,12 @@ version: '3.8.2'
 services:
   bot:
     build:
-      context: ./src # Указываем директорию, где находится Dockerfile
+      context: .
     env_file:
-      - .env # Загружает переменные окружения из файла .env
-    # Если нужно сохранять данные (например, логи, локальное состояние)
+      - .env
     volumes:
-      - ./src/parsed_data:/src/parsed_data # Монтируем локальную директорию ./bot/data в /app/data внутри контейнера
+      - ./src/parsed_data:/src/parsed_data
       - ./src/prompts:/src/prompts
       - ./src/db:/src/db
 
-    # Перезапускать контейнер в случае падения
-    restart: unless-stopped # или always, или on-failure
+    restart: unless-stopped
