@@ -3,7 +3,7 @@
 DOCKER := docker-compose
 
 up:
-	@$(DOCKER) up -d
+	@$(DOCKER) up -d --build
 
 down:
 	@$(DOCKER) down
