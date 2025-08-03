@@ -1,5 +1,6 @@
 import re
 from better_profanity import profanity
+from pathlib import Path
 
 class ProfanityFilter:
     def __init__(self, banned_words_file: str):
@@ -8,7 +9,7 @@ class ProfanityFilter:
 
     def _load_banned_words(self) -> list[str]:
         try:
-            with open("src/"+ self.banned_words_file, "r", encoding="utf-8") as file:
+            with open(Path.cwd() / "src" / self.banned_words_file, "r", encoding="utf-8") as file:
                 words = [line.strip().lower() for line in file if line.strip()]
             return words
         except FileNotFoundError:
