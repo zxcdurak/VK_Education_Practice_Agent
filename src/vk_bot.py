@@ -34,7 +34,7 @@ async def greet_handler(message: Message):
         print(message.text)
         await message.reply("☠️Хватит ругаться!☠️")
     else:
-        print("работаем...")
+        print("работаем..." + message.text)
         await message.reply(await ask_llm(gigachat, message.text))
 
 

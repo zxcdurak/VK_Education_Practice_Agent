@@ -1,0 +1,13 @@
+
+services:
+  bot:
+    build:
+      context: .
+    env_file:
+      - .env
+    volumes:
+      - ./src/parsed_data:/src/parsed_data
+      - ./src/prompts:/src/prompts
+      - ./src/db:/src/db
+
+    restart: unless-stopped
