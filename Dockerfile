@@ -7,7 +7,7 @@ COPY requirements.txt .
 RUN pip install --upgrade pip \
  && pip install --no-cache-dir -r requirements.txt
 
-COPY src/ .         
-EXPOSE 8000
+COPY src /app/src
 
-CMD ["python", "main.py"]
+EXPOSE 8000
+CMD ["python", "src/main.py"]
